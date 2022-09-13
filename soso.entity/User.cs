@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace solid.entity
+namespace soso.entity
 {
-    public class Person
+    public class User
     {
         /// <summary>
-        /// Person Name
+        /// User FIO
         /// </summary>
-        public string PersonName { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
-        /// Person Game
+        /// User Age
         /// </summary>
-        public string PersonGame { get; set; }
+        public int Age { get; set; }
     }
 }

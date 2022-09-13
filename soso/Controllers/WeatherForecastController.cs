@@ -1,7 +1,12 @@
-using Microsoft.AspNetCore.Mvc;
-using Entity = solid.entity;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace solid.Controllers
+
+namespace soso.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -19,22 +24,23 @@ namespace solid.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
         }
 
-        [HttpGet("Person")]
-        public Entity.Person GetPerson()
+        [HttpGet("user")]
+        public soso.entity.User getUser()
         {
-            return new Entity.Person { PersonGame = "Dota 1", PersonName = "Baha" };
+            return new soso.entity.User { UserName = "Person", Age = 34 };
         }
     }
 }
